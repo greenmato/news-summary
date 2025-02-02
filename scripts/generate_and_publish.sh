@@ -1,6 +1,10 @@
 #!/bin/bash
 set -e  # Exit on any error
 
+# Pull the image first
+echo "Pulling news summarizer image..."
+docker pull ghcr.io/greenmato/news-summarizer:latest
+
 # Run the summarizer and save output
 echo "Running news summarizer..."
 SUMMARY_OUTPUT=$(docker run -e ANTHROPIC_API_KEY="${ANTHROPIC_API_KEY}" ghcr.io/greenmato/news-summarizer:latest app --month $(date +%m) --year $(date +%Y))
