@@ -22,7 +22,7 @@ hugo new "content/docs/${TITLE}"
 # Insert the summary into the new file
 # Assuming the Hugo archetype creates frontmatter that ends with ---
 echo "Updating content..."
-cat > "content/docs/${TITLE}.md" << EOL
+cat > "content/docs/${TITLE}" << EOL
 ---
 title: "$(date -d "$(date +%Y-%m-01) -1 month" "+%B %Y")"
 weight: -$(date -d "$(date +%Y-%m-01) -1 month" +%Y%m)
@@ -35,6 +35,6 @@ EOL
 echo "Committing changes..."
 git config --global user.name "GitHub Actions Bot"
 git config --global user.email "actions@github.com"
-git add "content/docs/${TITLE}.md"
+git add "content/docs/${TITLE}"
 git commit -m "Add news summary for ${DATE}"
 git push
