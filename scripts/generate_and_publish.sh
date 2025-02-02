@@ -6,7 +6,7 @@ echo "Running news summarizer..."
 SUMMARY_OUTPUT=$(docker run -e ANTHROPIC_API_KEY="${ANTHROPIC_API_KEY}" ghcr.io/greenmato/news-summarizer:latest app --month $(date +%m) --year $(date +%Y))
 
 # Get today's date for the filename
-DATE=$(date +%Y-%m)
+DATE=$(date -d "$(date +%Y-%m-01) -1 month" +%Y-%m)
 TITLE="${DATE}.md"
 
 # Create new Hugo content
@@ -18,8 +18,8 @@ hugo new "content/posts/${TITLE}.md"
 echo "Updating content..."
 cat > "content/posts/${TITLE}.md" << EOL
 ---
-title: "$(date +%B %Y)"
-weight: -$(date +%Y%m)
+title: "$(date -d "$(date +%Y-%m-01) -1 month" "+%B %Y")"
+weight: -$(date -d "$(date +%Y-%m-01) -1 month" +%Y%m)
 ---
 
 ${SUMMARY_OUTPUT}
