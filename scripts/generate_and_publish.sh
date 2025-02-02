@@ -17,12 +17,12 @@ TITLE="${DATE}.md"
 
 # Create new Hugo content
 echo "Creating Hugo content..."
-hugo new "content/posts/${TITLE}.md"
+hugo new "content/docs/${TITLE}"
 
 # Insert the summary into the new file
 # Assuming the Hugo archetype creates frontmatter that ends with ---
 echo "Updating content..."
-cat > "content/posts/${TITLE}.md" << EOL
+cat > "content/docs/${TITLE}.md" << EOL
 ---
 title: "$(date -d "$(date +%Y-%m-01) -1 month" "+%B %Y")"
 weight: -$(date -d "$(date +%Y-%m-01) -1 month" +%Y%m)
