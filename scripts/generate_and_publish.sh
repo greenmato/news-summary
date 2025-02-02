@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e  # Exit on any error
 
+echo "${GITHUB_TOKEN}" | docker login ghcr.io -u greenmato --password-stdin
+
 # Pull the image first
 echo "Pulling news summarizer image..."
 docker pull ghcr.io/greenmato/news-summarizer:latest
