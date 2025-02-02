@@ -38,4 +38,4 @@ git config --global user.email "actions@github.com"
 git add "content/docs/${TITLE}"
 git commit -m "Add news summary for ${DATE}"
 git push
-sleep 5
+sleep 30
