@@ -35,6 +35,6 @@ EOL
 echo "Committing changes..."
 git config --global user.name "GitHub Actions Bot"
 git config --global user.email "actions@github.com"
-git add "content/posts/${TITLE}.md"
+git add "content/docs/${TITLE}.md"
 git commit -m "Add news summary for ${DATE}"
 git push
