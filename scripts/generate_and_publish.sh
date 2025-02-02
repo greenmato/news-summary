@@ -9,7 +9,7 @@ docker pull ghcr.io/greenmato/news-summarizer:latest
 
 # Run the summarizer and save output
 echo "Running news summarizer..."
-SUMMARY_OUTPUT=$(docker run -e ANTHROPIC_API_KEY="${ANTHROPIC_API_KEY}" ghcr.io/greenmato/news-summarizer:latest app --month $(date +%m) --year $(date +%Y))
+SUMMARY_OUTPUT=$(docker run -e ANTHROPIC_API_KEY="${ANTHROPIC_API_KEY}" ghcr.io/greenmato/news-summarizer:latest app --month $(date -d "$(date +%Y-%m-01) -1 month" +%m) --year $(date -d "$(date +%Y-%m-01) -1 month" +%Y))
 
 # Get today's date for the filename
 DATE=$(date -d "$(date +%Y-%m-01) -1 month" +%Y-%m)
